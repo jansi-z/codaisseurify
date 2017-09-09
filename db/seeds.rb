@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+
+artist1 = Artist.create!(name: "Liturgy", image_url: "https://f4.bcbits.com/img/a2613348647_10.jpg")
+artist2 = Artist.create!(name: "Sleep", image_url: "http://imagescdn.juno.co.uk/full/CS468861-01A-BIG.jpg")
+
+song1 = Song.create!(name: "Returner", artist: artist1)
+song2 = Song.create!(name: "Dopesmoker", artist: artist2)
