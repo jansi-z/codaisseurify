@@ -16,9 +16,6 @@ class ArtistsController < ApplicationController
   def create
     @artist = Artist.new(artist_params)
     if @artist.save
-      song_params.each do |song|
-        @artist.songs.create(name: song)
-      end
       redirect_to artist_path(@artist), notice: "Artist created!"
     else
       render :new
@@ -27,15 +24,11 @@ class ArtistsController < ApplicationController
 
   def edit
     @artist = Artist.find(params[:id])
-    @songs = @artist.songs
   end
 
   def update
     @artist = Artist.find(params[:id])
     if @artist.update(artist_params)
-      song_params.each do |song|
-        @artist.songs.create(name: song)
-      end
       redirect_to @artist, notice: "Artist updated!"
     else
       render :edit
@@ -48,10 +41,6 @@ private
   params
     .require(:artist)
     .permit(:name, :image_url, song_ids: [])
-  end
-
-  def song_params 
-    params[:songs].present? ? params.require(:songs) : []
   end
 
 end
