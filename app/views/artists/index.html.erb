@@ -4,3 +4,6 @@
 <%= link_to artist.name, artist_path(artist.id) %>
 <%= image_tag artist.image_url %>
 <% end %>
+
+<%= link_to "Add new artist", new_artist_path %>
+<%= link_to "Add new song", new_song_path %>
