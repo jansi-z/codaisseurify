@@ -21,4 +21,16 @@ RSpec.describe Artist, type: :model do
       expect(artist.errors).to have_key(:image_url)
     end
   end
+
+  describe "association with songs" do
+    let(:artist)  { create :artist }
+
+    it "can have many songs" do
+      song1 = Song.new(artist: artist)
+      song2 = Song.new(artist: artist)
+
+      expect(artist.songs).to include(song1)
+      expect(artist.songs).to include(song2)
+    end
+  end
 end
