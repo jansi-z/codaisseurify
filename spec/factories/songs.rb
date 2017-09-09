@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :song do
-    name "MyString"
+    name  { Faker::BossaNova.song }
   end
 end
