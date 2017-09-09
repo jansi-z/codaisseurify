@@ -1,7 +1,7 @@
 <h1><%= @artist.name %></h1>
 <ul>
   <% @artist.songs.each do |song| %>
-  <li><%= song.name %></li>
+    <li><%= song.name %> <%= link_to "Delete song", [@artist, song] %></li>
   <% end %>
 </ul>
 
