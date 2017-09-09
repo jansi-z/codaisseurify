@@ -44,7 +44,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.5', '>= 3.5.2'
   gem 'factory_girl_rails', '4.7.0'
-  gem 'faker', '1.6.6'
+  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 end
 
 group :test do
