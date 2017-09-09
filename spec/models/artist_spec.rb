@@ -35,7 +35,7 @@ RSpec.describe Artist, type: :model do
     end
 
     it "deletes associated songs" do
-      expect { artist.destroy }.to change(Room, :count).by(-1)
+      expect { artist.destroy }.to change(Artist, :count).by(-1)
     end
   end
 end
