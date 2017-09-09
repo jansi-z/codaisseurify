@@ -8,8 +8,8 @@
 
 
 #
-artist1 = Artist.create!(name: "Liturgy", image_url: "https://f4.bcbits.com/img/a2613348647_10.jpg")
-artist2 = Artist.create!(name: "Sleep", image_url: "http://imagescdn.juno.co.uk/full/CS468861-01A-BIG.jpg")
+artist1 = Artist.create!(name: "Liturgy")
+artist2 = Artist.create!(name: "Sleep")
 
 song1 = Song.create!(name: "Returner", artist: artist1)
 song2 = Song.create!(name: "Dopesmoker", artist: artist2)

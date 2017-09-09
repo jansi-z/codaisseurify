@@ -22,6 +22,18 @@ class ArtistsController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+    if @artist.update(artist_params)
+      redirect_to @artist, notice: "Artist updated!"
+    else
+      render :edit
+    end
+  end
+
 private
 
    def artist_params

@@ -4,6 +4,6 @@ class Artist < ApplicationRecord
   mount_uploader :image_url, ImageUploader
 
   validates :name,  presence: true, length: { maximum: 50 }
-  validates :image_url, presence: true
+  # validates :image_url, presence: true
 
 end
