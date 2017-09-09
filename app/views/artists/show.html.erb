@@ -5,7 +5,7 @@
   <% end %>
 </ul>
 
-<%= link_to "Add song", new_song_path %>
+<%= render "songs/form" %>
 
 <%= link_to "Delete", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
 
