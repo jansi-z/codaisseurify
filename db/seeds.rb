@@ -8,8 +8,21 @@
 
 
 #
-artist1 = Artist.create!(name: "Liturgy")
-artist2 = Artist.create!(name: "Sleep")
 
-song1 = Song.create!(name: "Returner", artist: artist1)
-song2 = Song.create!(name: "Dopesmoker", artist: artist2)
+Artist.destroy_all
+Song.destroy_all
+
+artist1 = Artist.create!(name: Faker::BossaNova.artist)
+artist2 = Artist.create!(name: Faker::BossaNova.artist)
+
+Song.create!(name: Faker::BossaNova.song, artist: artist1)
+Song.create!(name: Faker::BossaNova.song, artist: artist1)
+Song.create!(name: Faker::BossaNova.song, artist: artist1)
+Song.create!(name: Faker::BossaNova.song, artist: artist1)
+Song.create!(name: Faker::BossaNova.song, artist: artist1)
+
+Song.create!(name: Faker::BossaNova.song, artist: artist2)
+Song.create!(name: Faker::BossaNova.song, artist: artist2)
+Song.create!(name: Faker::BossaNova.song, artist: artist2)
+Song.create!(name: Faker::BossaNova.song, artist: artist2)
+Song.create!(name: Faker::BossaNova.song, artist: artist2)
