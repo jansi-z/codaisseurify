@@ -26,8 +26,8 @@ RSpec.describe Artist, type: :model do
     let(:artist)  { create :artist }
 
     it "can have many songs" do
-      song1 = Song.new(artist: artist)
-      song2 = Song.new(artist: artist)
+      song1 = artist.songs.build 
+      song2 = artist.songs.build
 
       expect(artist.songs).to include(song1)
       expect(artist.songs).to include(song2)
