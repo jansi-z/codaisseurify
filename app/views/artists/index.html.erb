@@ -1,6 +1,6 @@
 <h1>Hello and welcome to the artists page</h1>
 
 <% @artists.each do |artist| %>
-<p><%= artist.name %></p>
+<%= link_to artist.name, artist_path(artist.id) %>
 <%= image_tag artist.image_url %>
 <% end %>
