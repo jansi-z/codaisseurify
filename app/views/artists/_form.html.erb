@@ -1,5 +1,5 @@
 
-<%= form_for @artist do |f| %>
+<%= form_for @artist, html: { multipart: true } do |f| %>
 
   <% @artist.errors.full_messages.each do |message| %>
     <p><%= message %></p>
@@ -7,7 +7,7 @@
 
   <%= f.text_field :name, placeholder: "Artist name" %>
 
-  <%= f.text_field :image_url, placeholder: "Image url" %>
+  <%= f.file_field "image_url", type: :file %>
 
   <%= f.submit "Save" %>
 
