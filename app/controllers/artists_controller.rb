@@ -44,10 +44,14 @@ class ArtistsController < ApplicationController
 
 private
 
-   def artist_params
-    params
-      .require(:artist)
-      .permit(:name, :image_url, song_ids: [])
+  def artist_params
+  params
+    .require(:artist)
+    .permit(:name, :image_url, song_ids: [])
+  end
+
+  def song_params 
+    params[:songs].present? ? params.require(:songs) : []
   end
 
 end
