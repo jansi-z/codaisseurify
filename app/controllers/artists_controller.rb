@@ -2,6 +2,11 @@ class ArtistsController < ApplicationController
 
   def index
     @artists = Artist.all
+    if params[:order_by_name]
+      @artists.merge!(Artist.order("name ASC"))
+    elsif params[:order_by_creation]
+      @artists.merge!(Artist.order("created_at DESC"))
+    end
   end
 
   def show
