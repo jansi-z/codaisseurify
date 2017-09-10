@@ -15,3 +15,6 @@
 
 
 <%= link_to "Add new artist", new_artist_path %>
+
+<%= link_to "Sort by name", artists_path(order: "name") %>
+<%= link_to "Sort by creation time", artists_path(order: "created_at") %>
