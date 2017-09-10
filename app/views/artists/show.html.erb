@@ -1,4 +1,7 @@
 <h1><%= @artist.name %></h1>
+
+<%= image_tag @artist.image_url %>
+
 <ul>
   <% @artist.songs.each do |song| %>
     <li><%= song.name %> <%= link_to "Delete song", [@artist, song] %></li>
@@ -6,6 +9,8 @@
 </ul>
 
 <%= render "songs/form" %>
+
+<%= link_to "Add image", edit_artist_path %>
 
 <%= link_to "Delete", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
 

@@ -1,8 +1,17 @@
 <h1>Hello and welcome to the artists page</h1>
 
-<% @artists.each do |artist| %>
-<%= link_to artist.name, artist_path(artist.id) %>
-<%= image_tag artist.image_url %>
-<% end %>
+
+
+    <% @artists.each do |artist| %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= link_to artist.name, artist_path(artist.id) %>
+        </div>
+        <div class="col-md-4">
+          <%= image_tag artist.image_url %>
+        </div>
+      </div>
+    <% end %>
+
 
 <%= link_to "Add new artist", new_artist_path %>

@@ -1,2 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+img {
+  display:       block;
+  max-width:     300px;
+  max-height:    300px;
+  width:         auto;
+  height:        auto;
+}
