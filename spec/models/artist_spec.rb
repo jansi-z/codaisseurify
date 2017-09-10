@@ -14,12 +14,6 @@ RSpec.describe Artist, type: :model do
       artist.valid?
       expect(artist.errors).to have_key(:name)
     end
-
-    it "is invalid without an image url" do
-      artist = Artist.new(image_url: "")
-      artist.valid?
-      expect(artist.errors).to have_key(:image_url)
-    end
   end
 
   describe "association with songs" do
