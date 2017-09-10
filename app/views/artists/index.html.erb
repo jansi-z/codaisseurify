@@ -1,10 +1,12 @@
-<h1>Hello and welcome to the artists page</h1>
-
-
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <h1>Hello and welcome to the artists page</h1>
+  </div>
+</row>
 
     <% @artists.each do |artist| %>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-offset-2 col-md-4">
           <%= link_to artist.name, artist_path(artist.id) %>
         </div>
         <div class="col-md-4">
@@ -13,8 +15,12 @@
       </div>
     <% end %>
 
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <span class="btn btn-default"><%= link_to "Add new artist", new_artist_path %></span>
 
-<%= link_to "Add new artist", new_artist_path %>
+    <span class="btn btn-default"><%= link_to "Sort by name", artists_path(order: "name") %></span>
 
-<%= link_to "Sort by name", artists_path(order: "name") %>
-<%= link_to "Sort by creation time", artists_path(order: "created_at") %>
+    <span class="btn btn-default"><%= link_to "Sort by creation time", artists_path(order: "created_at") %></span>
+  </div>
+</row>
