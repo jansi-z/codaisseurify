@@ -14,6 +14,13 @@ RSpec.describe Artist, type: :model do
       artist.valid?
       expect(artist.errors).to have_key(:name)
     end
+
+    it "is invalid with a name that already exists" do
+      Artist.create!(name: "Jorge Ben Hor")
+      artist2 = Artist.new(name: "Jorge Ben Hor")
+      artist2.valid?
+      expect(artist2.errors).to have_key(:name)
+    end
   end
 
   describe "association with songs" do
