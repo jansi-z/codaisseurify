@@ -12,8 +12,8 @@
 Artist.destroy_all
 Song.destroy_all
 
-artist1 = Artist.create!(name: Faker::BossaNova.artist)
-artist2 = Artist.create!(name: Faker::BossaNova.artist)
+artist1 = Artist.create!(name: Faker::BossaNova.artist, image_url: open("http://res.cloudinary.com/nothingbuttrouble/image/upload/v1504960621/bossa_nova.jpg.jpg"))
+artist2 = Artist.create!(name: Faker::BossaNova.artist, image_url: open("http://res.cloudinary.com/nothingbuttrouble/image/upload/v1504960621/bossa_nova.jpg.jpg"))
 
 Song.create!(name: Faker::BossaNova.song, artist: artist1)
 Song.create!(name: Faker::BossaNova.song, artist: artist1)

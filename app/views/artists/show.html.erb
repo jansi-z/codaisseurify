@@ -1,17 +1,42 @@
-<h1><%= @artist.name %></h1>
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <h1><%= @artist.name %></h1>
+  </div>
+</row>
 
-<%= image_tag @artist.image_url %>
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <%= image_tag @artist.image_url %>
+  </div>
+</row>
 
-<ul>
-  <% @artist.songs.each do |song| %>
-    <li><%= song.name %> <%= link_to "Delete song", [@artist, song] %></li>
-  <% end %>
-</ul>
+<row>
+  <div class="col-md-offset-2 col-md-8">
+      <% @artist.songs.each do |song| %>
+        <div class="row">
+          <div class="col-md-8">
+            <p><%= song.name %> </p>
+          </div>
+          <div class="col-md-4">
+            <span class="btn btn-default"><%= link_to "Delete song", [@artist, song] %></span>
+          </div>
+        </div>
+      <% end %>
+  </div>
+</row>
 
-<%= render "songs/form" %>
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <span class="btn btn-default"><%= link_to "Add image", edit_artist_path %></span>
 
-<%= link_to "Add image", edit_artist_path %>
+    <span class="btn btn-default"><%= link_to "Delete artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %></span>
 
-<%= link_to "Delete artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %>
+    <span class="btn btn-default"><%= link_to "Back", artists_path %></span>
+  </div>
+</row>
 
-<%= link_to "Back", artists_path %>
+<row>
+  <div class="col-md-offset-2 col-md-8">
+    <%= render "songs/form" %>
+  </div>
+</row>
