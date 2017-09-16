@@ -1,5 +1,7 @@
 class SongsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def new
     @song = Song.new
   end
@@ -10,7 +12,7 @@ class SongsController < ApplicationController
     respond_to do |format|
       if @song.save
         format.html { redirect_to artist_path(@song.artist), notice: "Song added!" }
-        format.json { render :show, status: :created, location: @song }
+        # format.json { render :artist_id, status: :created, location: @song }
       else
         format.html { redirect_to artist_path(@song.artist), notice: "Unable to add song." }
         format.json { render json: @song.errors, status: :unprocessable_entity }

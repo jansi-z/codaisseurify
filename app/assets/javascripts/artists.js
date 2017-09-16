@@ -10,6 +10,19 @@ function createSong(name) {
     .html(name);
 
   $("#songList").append( listItem );
+
+  var newSong = { name: name };
+  var artistId = $('.header').attr('id');
+
+  $.ajax({
+    type: "POST",
+    url: "/api/artists/"+artistId+"/songs.json",
+    data: JSON.stringify({
+        song: newSong
+    }),
+    contentType: "application/json",
+    dataType: "json"
+  });
 }
 
 function submitSong(event) {
@@ -26,4 +39,5 @@ function deleteAllSongs(event) {
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
   $("#clean-up").bind('click', deleteAllSongs);
+
 });
