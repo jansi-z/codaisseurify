@@ -3,7 +3,7 @@ function nextSongId() {
 }
 
 function createSong(name) {
-  var songId = "song-" + nextTodoId();
+  var songId = "song-" + nextSongId();
 
   var listItem = $('<li class="song"></li>')
     .attr('for', songId)
@@ -20,7 +20,7 @@ function submitSong(event) {
 
 function deleteAllSongs(event) {
   event.preventDefault();
-  $.when($("#song").remove())
+  $.when($(".song").remove())
 }
 
 $(document).ready(function() {
