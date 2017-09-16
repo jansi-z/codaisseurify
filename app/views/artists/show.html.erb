@@ -9,19 +9,18 @@
     <%= image_tag @artist.image_url %>
   </div>
 </row>
-
+<row>
+    <% if notice.present? %>
+      <div class="alert alert-info" role="alert">
+        <%= notice %>
+      </div>
+    <% end %>
+</row>
 <row>
   <div class="col-md-offset-2 col-md-8">
-      <% @artist.songs.each do |song| %>
-        <div class="row">
-          <div class="col-md-8">
-            <p><%= song.name %> </p>
-          </div>
-          <div class="col-md-4">
-            <span class="btn btn-default"><%= link_to "Delete song", [@artist, song] %></span>
-          </div>
-        </div>
-      <% end %>
+    <ul id="songList">
+      <%= render @songs %>
+    </ul>
   </div>
 </row>
 
@@ -32,11 +31,13 @@
     <span class="btn btn-default"><%= link_to "Delete artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %></span>
 
     <span class="btn btn-default"><%= link_to "Back to list", artists_path %></span>
+
+    <span class="btn btn-default"><a href="#" id="clean-up">Delete all songs</a></span>
   </div>
 </row>
 
 <row>
   <div class="col-md-offset-2 col-md-8">
-    <%= render "songs/form" %>
+    <%= render "song_form", song: @song %>
   </div>
 </row>
