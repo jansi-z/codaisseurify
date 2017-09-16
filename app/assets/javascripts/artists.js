@@ -7,7 +7,7 @@ function createSong(name) {
 
   var listItem = $('<li class="song"></li>')
     .attr('for', songId)
-    .html(name);
+    .html(name + '<a href="#" class="delete-song">Delete</a>');
 
   $("#songList").append( listItem );
 
@@ -23,6 +23,7 @@ function createSong(name) {
     contentType: "application/json",
     dataType: "json"
   });
+  $(".delete-song").bind('click', deleteSingleSong);
 }
 
 function submitSong(event) {
@@ -33,11 +34,38 @@ function submitSong(event) {
 
 function deleteAllSongs(event) {
   event.preventDefault();
-  $.when($(".song").remove())
+
+  $.each($(".song"), function(index, listItem) {
+    songId = $(listItem).data('id');
+    deleteSong(songId);
+  });
+}
+
+function deleteSingleSong(event) {
+  var deleteButton = this;
+  var songItem = $(this).parent();
+  var songId = $(songItem).data('id');
+
+  deleteSong(songId);
+
+}
+
+function deleteSong(songId) {
+  var artistId = $('.header').attr('id');
+
+  $.ajax({
+    type: "DELETE",
+    url: "/api/artists/"+artistId+"/songs/"+songId+".json",
+    contentType: "application/json",
+    dataType: "json"
+  })
+  .done(function(data) {
+    $('li[data-id="'+songId+'"]').remove();
+  });
 }
 
 $(document).ready(function() {
   $("form").bind('submit', submitSong);
   $("#clean-up").bind('click', deleteAllSongs);
-
+  $(".delete-song").bind('click', deleteSingleSong);
 });
