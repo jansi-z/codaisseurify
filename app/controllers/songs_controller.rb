@@ -6,11 +6,15 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(song_params.merge(artist_id: params[:artist_id]))
-    @song.save
-    if @song.save
-      redirect_to artist_path(@song.artist), notice: "Song added!"
-    else
-      render :new
+
+    respond_to do |format|
+      if @song.save
+        format.html { redirect_to artist_path(@song.artist), notice: "Song added!" }
+        format.json { render :show, status: :created, location: @song }
+      else
+        format.html { redirect_to artist_path(@song.artist), notice: "Unable to add song." }
+        format.json { render json: @song.errors, status: :unprocessable_entity }
+      end
     end
   end
 
@@ -32,6 +36,6 @@ class SongsController < ApplicationController
     params
       .require(:song)
       .permit(:name, :artist_id)
-    end
+  end
 
 end
