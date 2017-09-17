@@ -37,4 +37,18 @@ feature "Manage songs", js:true do
     expect(list.size).to eq(0)
   end
 
+  scenario "remove all songs" do
+
+    visit artist_path(artist)
+
+    fill_in "song_name", with: "Fado"
+
+    page.execute_script("$('#new_song').submit()")
+    sleep(1)
+    click_on("Delete all songs")
+    sleep(1)
+    list = find('#songList').all('li')
+    expect(list.size).to eq(0)
+  end
+
 end
