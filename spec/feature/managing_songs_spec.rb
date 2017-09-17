@@ -13,4 +13,15 @@ feature "Manage songs", js:true do
 
     expect(page).to have_content("Court To Love")
   end
+
+  scenario "add a song without a title" do
+
+    visit artist_path(artist)
+
+    fill_in "song_name", with: ""
+
+    page.execute_script("$('#new_song').submit()")
+    sleep(1)
+    expect(page.find(:css, 'span#error_message').text).to eq("Not a valid song name")
+  end
 end
