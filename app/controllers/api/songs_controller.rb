@@ -14,7 +14,7 @@ class Api::SongsController < ApplicationController
 
     if song.save
       render status: 201, json: {
-        message: "Song successfully created",
+        message: "Song created",
         song: song
       }.to_json
     else
