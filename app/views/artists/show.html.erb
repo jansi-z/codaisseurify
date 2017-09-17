@@ -1,31 +1,26 @@
 <row>
   <div class="header col-md-offset-2 col-md-8" id="<%= @artist.id %>">
     <h1><%= @artist.name %></h1>
-  </div>
-</row>
-
-<row>
-  <div class="col-md-offset-2 col-md-8">
-    <%= image_tag @artist.image_url %>
-  </div>
-</row>
-<row>
     <% if notice.present? %>
       <div class="alert alert-info" role="alert">
         <%= notice %>
       </div>
     <% end %>
-</row>
-<row>
-  <div class="col-md-offset-2 col-md-8">
+  </div>
+
+
+
+  <div class="artist-image col-md-offset-2 col-md-4">
+    <%= image_tag @artist.image_url %>
+  </div>
+
+  <div class="artist-songs col-md-4">
     <ul id="songList">
       <%= render @songs %>
     </ul>
   </div>
-</row>
 
-<row>
-  <div class="col-md-offset-2 col-md-8">
+  <div class="artist-buttons col-md-offset-2 col-md-8">
     <span class="btn btn-default"><%= link_to "Edit artist", edit_artist_path %></span>
 
     <span class="btn btn-default"><%= link_to "Delete artist", artist_path(@artist.id), method: :delete, data: { confirm: "Are you sure?" } %></span>
@@ -34,10 +29,11 @@
 
     <span class="btn btn-default"><a href="#" id="clean-up">Delete all songs</a></span>
   </div>
-</row>
 
-<row>
-  <div class="col-md-offset-2 col-md-8">
+
+
+  <div class="artist-form col-md-offset-2 col-md-8">
+    <p>Add a song to the artist:</p>
     <%= render "song_form", song: @song %>
   </div>
 </row>

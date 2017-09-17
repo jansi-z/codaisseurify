@@ -29,7 +29,7 @@ function createSong(name) {
 
   .fail(function(error) {
     console.log(error);
-    error_message = "Not a valid song name";
+    error_message = error.responseJSON.errors.name;
     showError(error_message);
   });
 }
