@@ -65,7 +65,7 @@ function deleteSong(songId) {
 }
 
 $(document).ready(function() {
-  $("#song-form").bind('submit', submitSong);
+  $("#new_song").bind('submit', submitSong);
   $("#clean-up").bind('click', deleteAllSongs);
   $(".delete-song").bind('click', deleteSingleSong);
 });
