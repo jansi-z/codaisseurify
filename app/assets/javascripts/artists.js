@@ -21,7 +21,7 @@ function createSong(name) {
     console.log(data);
 
     var songId = data.song.id;
-    debugger;
+    
     var listItem = $('<li class="song"></li>')
       .attr('data-id', songId)
       .html(name + '<a href="#" class="delete-song">  Delete</a>');
