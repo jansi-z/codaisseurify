@@ -1,7 +1,3 @@
-function nextSongId() {
-  return $(".song").size() + 1;
-}
-
 function createSong(name) {
 
   var newSong = { name: name };
@@ -21,7 +17,7 @@ function createSong(name) {
     console.log(data);
 
     var songId = data.song.id;
-    
+
     var listItem = $('<li class="song"></li>')
       .attr('data-id', songId)
       .html(name + '<a href="#" class="delete-song">  Delete</a>');
