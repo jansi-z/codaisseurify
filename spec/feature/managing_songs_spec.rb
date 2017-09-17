@@ -32,7 +32,9 @@ feature "Manage songs", js:true do
 
     click_on("Delete")
     sleep(1)
-    expect(page.find(:css, 'li.song').length).to eq(0)
+    list = find('#songList').all('li')
+
+    expect(list.size).to eq(0)
   end
 
 end
