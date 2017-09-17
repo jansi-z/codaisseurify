@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 feature "Manage songs", js:true do
-  let(:artist) { create :artist, name: "Clannad" }
+  let!(:artist)    { create :artist, name: "Clannad" }
+  let!(:song)      { create :song, name: "Let Me See", artist: artist }
 
   scenario "add a new song" do
 
@@ -14,7 +15,7 @@ feature "Manage songs", js:true do
     expect(page).to have_content("Court To Love")
   end
 
-  scenario "add a song without a title" do
+  scenario "can't add a song without a name" do
 
     visit artist_path(artist)
 
@@ -24,4 +25,14 @@ feature "Manage songs", js:true do
     sleep(1)
     expect(page.find(:css, 'span#error_message').text).to eq("Not a valid song name")
   end
+
+  scenario "remove a song" do
+
+    visit artist_path(artist)
+
+    click_on("Delete")
+    sleep(1)
+    expect(page.find(:css, 'li.song').length).to eq(0)
+  end
+
 end
