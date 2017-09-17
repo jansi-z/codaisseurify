@@ -23,7 +23,7 @@ feature "Manage songs", js:true do
 
     page.execute_script("$('#new_song').submit()")
     sleep(1)
-    expect(page.find(:css, 'span#error_message').text).to eq("Not a valid song name")
+    expect(page.find(:css, 'span#error_message').text).to eq("can't be blank")
   end
 
   scenario "remove a song" do
