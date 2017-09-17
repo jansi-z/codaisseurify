@@ -3,13 +3,6 @@ function nextSongId() {
 }
 
 function createSong(name) {
-  var songId = "song-" + nextSongId();
-
-  var listItem = $('<li class="song"></li>')
-    .attr('for', songId)
-    .html(name + '<a href="#" class="delete-song">Delete</a>');
-
-  $("#songList").append( listItem );
 
   var newSong = { name: name };
   var artistId = $('.header').attr('id');
@@ -22,12 +15,42 @@ function createSong(name) {
     }),
     contentType: "application/json",
     dataType: "json"
+  })
+
+  .fail(function(error) {
+    console.log(error);
+    error_message = "Not a valid song name";
+    showError(error_message);
   });
+
+  var songId = nextSongId;
+
+  var listItem = $('<li class="song"></li>')
+    .attr('for', songId)
+    .html(name + '<a href="#" class="delete-song">Delete</a>');
+
+  $("#songList").append( listItem );
+
   $(".delete-song").bind('click', deleteSingleSong);
+}
+
+function showError(message) {
+  var errorHelpBlock = $('<span class="help-block"></span>')
+    .attr('id', 'error_message')
+    .text(message);
+  $("#formgroup-title")
+    .addClass("has-error")
+    .append(errorHelpBlock);
+}
+
+function resetErrors() {
+  $("#error_message").remove();
+  $("#formgroup-title").removeClass("has-error");
 }
 
 function submitSong(event) {
   event.preventDefault();
+  resetErrors();
   createSong($("#song_name").val());
   $("#song_name").val(null);
 }

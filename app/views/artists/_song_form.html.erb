@@ -1,5 +1,5 @@
 <%= form_for([@artist, Song.new]) do |f| %>
-  <div class="form-group" id="form-1">
+  <div class="form-group" id="formgroup-title">
     <%= f.text_field :name, placeholder: "Song title", class: 'form-control' %>
 
     <% if song.errors.any? %>
